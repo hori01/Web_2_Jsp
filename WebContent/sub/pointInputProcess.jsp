@@ -22,7 +22,7 @@ String driver="oracle.jdbc.driver.OracleDriver";
 Class.forName(driver);
 Connection con= DriverManager.getConnection(url, user, password);
 
-String sql="insert into point2 values(1,?,?,?,?,?,?)";
+String sql="insert into point3 values(1,?,?,?,?,?,?)";
 
 PreparedStatement st=con.prepareStatement(sql);
 
