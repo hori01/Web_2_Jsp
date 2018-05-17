@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+header{
+width:100%;
+height:67px;
+background-image:url("/Web_2_Jsp/common/header_bg.png");
+background-repeat:repeat-x;   
+position:fixed; 
+z-index:999  
+}
+#header{
+width:60%;
+height:67px;  
+margin:0 auto;
+}
+#logo{
+float:left; 
+padding-top:13px;
+box-sizing:border-box;   
+}
+#header>nav{
+float:left;  
+width:50%;
+height:67px;
+margin-left:80px;   
+}
+#header>nav> ul> li{
+float:left; 
+line-height:67px;
+margin-left:40px;  
+}
+#header>nav> ul> li> a:link, a:visited {
+    color: white;
+    text-decoration:none; 
+    font-size:0.8em;
+    font-weight:bold;  
+}
+#header>nav> ul> li> a:hover, a:active {
+    color: red;
+}
+#header>div{
+float:right;
+}
+#header>div>ul{
+float:right;
+}
+#header>div>ul>li{
+float:right;
+margin-left:10px; 
+}
+#header>div>ul>li>a{
+    color: white;
+    text-decoration:none; 
+    font-size:0.5em;
+}
+/*header종료 */
+/*main시작 */
+#main{
+width:60%;
+height:942px;
+margin: 0 auto;  
+position:relative;
+top:117px;
+z-index:3;   
+}
+/*main종료 */
+footer{
+position:relative; 
+z-index:3; 
+height:62px; 
+padding:26px 0 44px 0; 
+color:#a9a9a9; 
+font-weight:bold; 
+font-size:11px; 
+background-image:url("/Web_2_Jsp/common/header_bg.gif"); 
+background-repeat:repeat; 
+top:170px;
+}
+
+#footer{
+width:60%;
+height:62px;  
+margin:0 auto;
+}
+#footer>nav{
+float:left;  
+width:auto;
+height:65px;
+margin-left:33px ;
+}
+#footer a{
+color:#a9a9a9;
+text-decoration:none;  
+ 
+}
+
+#logof{
+float:left; 
+box-sizing:border-box;   
+}
