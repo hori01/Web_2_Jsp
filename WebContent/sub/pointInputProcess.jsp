@@ -1,3 +1,4 @@
+<%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
@@ -14,26 +15,37 @@ int math=Integer.parseInt(request.getParameter("math"));
 int total=kor+eng+math;
 int avg=total/3;
 
-String user="USER01";
-String password="USER01";
+String user="user02";
+String password="user02";
 String url="jdbc:oracle:thin:@192.168.10.161:1521:xe";
 String driver="oracle.jdbc.driver.OracleDriver";
 
 Class.forName(driver);
 Connection con= DriverManager.getConnection(url, user, password);
 
-String sql="insert into point3 values(1,?,?,?,?,?,?)";
-
+String sql="select max(num) from point";
 PreparedStatement st=con.prepareStatement(sql);
 
-st.setString(1, name);
-st.setInt(2, kor);
-st.setInt(3, eng);
-st.setInt(4, math);
-st.setInt(5, total);
-st.setDouble(6, avg);
+ResultSet rs=st.executeQuery();
+
+rs.next();
+int num=1+rs.getInt(1);
+
+
+sql="insert into point values(?,?,?,?,?,?,?)";
+
+st=con.prepareStatement(sql);
+
+st.setInt(1, num);
+st.setString(2, name);
+st.setInt(3, kor);
+st.setInt(4, eng);
+st.setInt(5, math);
+st.setInt(6, total);
+st.setDouble(7, avg);
 
 int result=st.executeUpdate();
+rs.close();
 st.close();
 con.close();
 
