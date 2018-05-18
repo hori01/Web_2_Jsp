@@ -69,7 +69,7 @@ for(PointDTO p:ap){
 <label>MATH</label>
 <input type="text" id="math" name="math" class="form-control" placeholder="MATH" required="required">
 <input type="hidden" name="num" value="<%=num%>">
-<input type="button" id="btn" class="btn-success" value="ENTER">
+<input type="submit" id="btn" class="btn-success" value="ENTER">
 </form>
 </section>
 <%@ include file="../temp/footer.jsp" %>

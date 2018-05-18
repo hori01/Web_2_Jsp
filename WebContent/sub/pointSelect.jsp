@@ -61,12 +61,14 @@ for(PointDTO p:ap){
 </table>
 
 <form action="./pointSelectProcess.jsp">
-
+검색할 번호를 고르시오.
+<select name="num">
 <% for(int i=1;i<=num;i++){%>
-Num<%=i %>:<input type="radio" id="c<%=i %>"name="num" value="<%=i %>">
+<option  value="<%=i %>"><%=i %></option>
 <%	
 } 
 %>
+</select>
 <input type="submit" id="btn2" class="btn-success" value="ENTER">
 </form>
 </section>

@@ -73,7 +73,6 @@ public class PointDAO {
 
 			rs.next();
 			result=rs.getInt(1);
-			System.out.println(result);
 			DBConnector.disConnect(rs, st, con);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -52,13 +52,31 @@ else{sql="입력 실패";};
 
 <%@ include file="../temp/header.jsp" %>
 <section id="main">
-<h1>NAME:<%=name %></h1>
-<h1>KOR:<%=kor %></h1>
-<h1>ENG:<%=eng %></h1>
-<h1>MATH:<%=math %></h1>
-<h1>TOTAL:<%=total %></h1>
-<h1>AVG:<%=avg %></h1>
 <h1>Input:<%=sql  %></h1>
+<table class="table-bordered" style="width:100%">
+<thead>
+<tr>
+<th> NUM </th>
+<th> NAME </th>
+<th> KOR </th>
+<th> ENG </th>
+<th> MATH </th>
+<th> TOTAL </th>
+<th> AVG </th>
+</tr>
+</thead>
+<tbody>
+<tr>	
+<td> <%=num %></td>	
+<td> <%=name %> </td>	
+<td> <%=kor %> </td>	
+<td> <%=eng %> </td>	
+<td> <%=math %> </td>	
+<td> <%=total %> </td>	
+<td> <%=avg %> </td>	
+</tr>
+</tbody>
+</table>
 </section>
 <%@ include file="../temp/footer.jsp" %>
 </body>

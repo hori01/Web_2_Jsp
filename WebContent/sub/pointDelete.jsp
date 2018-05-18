@@ -62,11 +62,14 @@ for(PointDTO p:ap){
 
 <form action="./pointDeleteProcess.jsp">
 
+삭제할 번호를 고르시오.
+<select name="num">
 <% for(int i=1;i<=num;i++){%>
-NUM<%=i %>:<input type="radio" id="c<%=i %>"name="num" value="<%=i %>">
+<option  value="<%=i %>"><%=i %></option>
 <%	
 } 
 %>
+</select>
 <input type="submit" id="btn2" class="btn-success" value="ENTER">
 </form>
 </section>
