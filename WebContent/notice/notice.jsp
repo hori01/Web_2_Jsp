@@ -1,58 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% 
+request.setCharacterEncoding("UTF-8");
+response.setCharacterEncoding("UTF-8");
+%>       
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css"></style>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/reset.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/common.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 </head>
-<link rel="stylesheet" href="/sample_FNC/css/reset.css">
-<link rel="stylesheet" href="/sample_FNC/css/common.css">
-<style>
 
-/*header시작 */
-
-</style>
 
 <body>
-<header>
-
-<div id=header>
-<h1 id=logo><a href="/sample_FNC/index.jsp"><img alt="" src="/sample_FNC/common/logo.png"></a></h1>
-<nav>
-<ul>
-<li><a href="notice.jsp">NOTICE</a></li>
-<li><a href="">ARTISTS</a></li>
-<li><a href="">PR CENTER</a></li>
-<li><a href="">AUDITION</a></li>
-</ul>
-</nav>
-<div>
-<ul>
-<li><a href="">CN</a></li>
-<li><a href="">JP</a></li>
-<li><a href="">EN</a></li>
-<li><a href="">KOR</a></li>
-<li><a href="">JOIN</a></li>
-<li><a href="">LOGIN</a></li>
-</ul>
-</div>
-</div>
-</header>
+<%@ include file="../temp/header.jsp" %>
 <section id=main>
 </section>
 
-<footer>
-<div id=footer>
-<h1 id=logof><img alt="" src="../common/ft_logo.png"></h1>
-<nav>
-<ul>
-<li><a href="#">개인정보취급방침</a> |<a href="#"> 이용약관 </a>|<a href="#"> 고객센터/문의하기 (Customer Service)</a></li>
-<li>서울시 강남구 청담동 111 (주) FNC ENTERTAINMENT  |   TEL. 02) 517-5426   |  FAX. 02) 518-5428</li>
-<li><h6>COPYRIGHT © 2014 FNCENT.COM ALL RIGHT RESERVED</h6></li>
-</ul>
-</nav>
-</div>
-</footer>
+<%@ include file="../temp/footer.jsp" %>
 </body>
 </html>

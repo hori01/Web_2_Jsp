@@ -8,7 +8,7 @@
 <nav>
 <ul>
 <li><a href="<%=request.getContextPath() %>/notice/notice.jsp">NOTICE</a></li>
-<li><a href="<%=request.getContextPath() %>/sub/pointInput.jsp">POINT</a></li>
+<li><a href="<%=request.getContextPath() %>/sub/point.jsp">POINT</a></li>
 <li><a href="">AUDITION</a></li>
 </ul>
 </nav>

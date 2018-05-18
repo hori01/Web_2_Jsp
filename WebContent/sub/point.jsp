@@ -1,33 +1,9 @@
-<%@page import="com.iu.point.PointDAO"%>
-<%@page import="com.iu.point.PointDTO"%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% 
 request.setCharacterEncoding("UTF-8");
 response.setCharacterEncoding("UTF-8");
-String name=request.getParameter("name");
-int kor=Integer.parseInt(request.getParameter("kor"));
-int eng=Integer.parseInt(request.getParameter("eng"));
-int math=Integer.parseInt(request.getParameter("math"));
-int total=kor+eng+math;
-double avg=total/3;
-
-PointDTO pointDTO=new PointDTO();
-pointDTO.setName(name);
-pointDTO.setKor(kor);
-pointDTO.setEng(eng);
-pointDTO.setMath(math);
-pointDTO.setTotal(total);
-pointDTO.setAvg(avg);
-
-PointDAO pointDAO=new PointDAO();
-int result=pointDAO.insert(pointDTO);
-
-String sql=null;
-if(result>0){sql="입력 성공";}
-else{sql="입력 실패";};
-%>            
+%>       
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,15 +21,13 @@ else{sql="입력 실패";};
 <body>
 
 <%@ include file="../temp/header.jsp" %>
-<section id="main">
-<h1>NAME:<%=name %></h1>
-<h1>KOR:<%=kor %></h1>
-<h1>ENG:<%=eng %></h1>
-<h1>MATH:<%=math %></h1>
-<h1>TOTAL:<%=total %></h1>
-<h1>AVG:<%=avg %></h1>
-<h1>Input:<%=sql  %></h1>
+<section id=main>
+<div style="background-color:gray;">
+		<p><a href="./pointInput.jsp">POINT INPUT</a> </p>
+		<a href="./pointDelete.jsp">POINT DELETE</a>
+</div>
 </section>
+
 <%@ include file="../temp/footer.jsp" %>
 </body>
 </html>
