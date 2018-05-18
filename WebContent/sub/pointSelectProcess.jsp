@@ -6,9 +6,10 @@
 <% 
 request.setCharacterEncoding("UTF-8");
 response.setCharacterEncoding("UTF-8");
+int num=Integer.parseInt(request.getParameter("num"));
+
 PointDAO pointDAO= new PointDAO(); 
-int num=pointDAO.select();
-%>
+%>            
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,8 +27,9 @@ int num=pointDAO.select();
 <body>
 
 <%@ include file="../temp/header.jsp" %>
-<section id=main>
+<section id="main">
 
+<h1>검색결과 :<%=num  %>번 학생 정보</h1>
 <table class="table-bordered" style="width:100%">
 <thead>
 <tr>
@@ -42,7 +44,7 @@ int num=pointDAO.select();
 </thead>
 <tbody>
 <% 
-ArrayList<PointDTO> ap=pointDAO.print();
+ArrayList<PointDTO> ap=pointDAO.print(num);
 for(PointDTO p:ap){
 %>	
 <tr>	
@@ -59,16 +61,6 @@ for(PointDTO p:ap){
 %>
 </tbody>
 </table>
-
-<form action="./pointDeleteProcess.jsp">
-
-<% for(int i=1;i<=num;i++){%>
-NUM<%=i %>:<input type="radio" id="c<%=i %>"name="num" value="<%=i %>">
-<%	
-} 
-%>
-<input type="submit" id="btn2" class="btn-success" value="ENTER">
-</form>
 </section>
 <%@ include file="../temp/footer.jsp" %>
 </body>

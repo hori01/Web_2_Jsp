@@ -60,10 +60,10 @@ for(PointDTO p:ap){
 </tbody>
 </table>
 
-<form action="./pointDeleteProcess.jsp">
-
+<form action="./pointModProcess.jsp">
+수정할 번호를 고르시오.
 <% for(int i=1;i<=num;i++){%>
-NUM<%=i %>:<input type="radio" id="c<%=i %>"name="num" value="<%=i %>">
+<%=i %>:<input type="radio" id="c<%=i %>"name="num" value="<%=i %>">
 <%	
 } 
 %>

@@ -1,14 +1,15 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="com.iu.point.PointDAO"%>
-<%@page import="com.iu.point.PointDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="com.iu.point.PointDAO"%>
+<%@page import="com.iu.point.PointDTO"%>
+<%@page import="java.util.ArrayList"%>    
 <% 
 request.setCharacterEncoding("UTF-8");
 response.setCharacterEncoding("UTF-8");
-PointDAO pointDAO= new PointDAO(); 
-int num=pointDAO.select();
-%>
+
+int num=Integer.parseInt( request.getParameter("num"));
+PointDAO pointDAO=new PointDAO(); 
+%>       
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,13 +22,12 @@ int num=pointDAO.select();
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 </head>
-<script type="text/javascript">
-</script>
+<script type="text/javascript"></script>
 <body>
 
 <%@ include file="../temp/header.jsp" %>
 <section id=main>
-
+<h1>수정할 대상:<%=num  %>번 학생</h1>
 <table class="table-bordered" style="width:100%">
 <thead>
 <tr>
@@ -42,7 +42,7 @@ int num=pointDAO.select();
 </thead>
 <tbody>
 <% 
-ArrayList<PointDTO> ap=pointDAO.print();
+ArrayList<PointDTO> ap=pointDAO.print(num);
 for(PointDTO p:ap){
 %>	
 <tr>	
@@ -59,15 +59,17 @@ for(PointDTO p:ap){
 %>
 </tbody>
 </table>
-
-<form action="./pointDeleteProcess.jsp">
-
-<% for(int i=1;i<=num;i++){%>
-NUM<%=i %>:<input type="radio" id="c<%=i %>"name="num" value="<%=i %>">
-<%	
-} 
-%>
-<input type="submit" id="btn2" class="btn-success" value="ENTER">
+<form action="./pointModUpdate.jsp" method="post"  id="from">
+<label>NAME</label>
+<input type="text" id="name" name="name" class="form-control" placeholder="NAME" required="required">
+<label>KOR</label>
+<input type="text" id="kor" name="kor" class="form-control" placeholder="KOR" required="required">
+<label>ENG</label>
+<input type="text" id="eng" name="eng" class="form-control" placeholder="ENG" required="required">
+<label>MATH</label>
+<input type="text" id="math" name="math" class="form-control" placeholder="MATH" required="required">
+<input type="hidden" name="num" value="<%=num%>">
+<input type="button" id="btn" class="btn-success" value="ENTER">
 </form>
 </section>
 <%@ include file="../temp/footer.jsp" %>

@@ -22,9 +22,11 @@ response.setCharacterEncoding("UTF-8");
 
 <%@ include file="../temp/header.jsp" %>
 <section id=main>
-<div style="background-color:gray;">
-		<p><a href="./pointInput.jsp">POINT INPUT</a> </p>
-		<a href="./pointDelete.jsp">POINT DELETE</a>
+<div>
+<button onclick="location.href='./pointInput.jsp'" class="btn-success">POINT INPUT</button>
+<button onclick="location.href='./pointDelete.jsp'" class="btn-success">POINT DELETE</button>
+<button onclick="location.href='./pointSelect.jsp'" class="btn-success">POINT SELECT</button>
+<button onclick="location.href='./pointMod.jsp'" class="btn-success">POINT MOD</button>
 </div>
 </section>
 

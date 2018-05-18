@@ -16,22 +16,7 @@ response.setCharacterEncoding("UTF-8");
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 </head>
-<script type="text/javascript">
-$(function(){
-$("#btn").click(
-		function(){
-			var check=true;
-			$(".form-control").each(function(){
-				if($(this).val()==""){
-					check=false;	
-				}
-			})
-			if(check){$("#from").submit();
-			}else{alert('Empty Data')}
-		})
-	
-});
-</script>
+<script type="text/javascript"></script>
 <body>
 
 <%@ include file="../temp/header.jsp" %>
@@ -41,12 +26,11 @@ $("#btn").click(
 <input type="text" id="name" name="name" class="form-control" placeholder="NAME" required="required">
 <label>KOR</label>
 <input type="text" id="kor" name="kor" class="form-control" placeholder="KOR" required="required">
-<label>NAME</label>
+<label>ENG</label>
 <input type="text" id="eng" name="eng" class="form-control" placeholder="ENG" required="required">
-<label>NAME</label>
+<label>MATH</label>
 <input type="text" id="math" name="math" class="form-control" placeholder="MATH" required="required">
-<input type="submit" id="btn" class="btn-success" value="ENTER 1">
-<input type="submit" id="btn2" class="btn-success" value="ENTER 2">
+<input type="submit" id="btn" class="btn-success" value="ENTER">
 </form>
 </section>
 <%@ include file="../temp/footer.jsp" %>

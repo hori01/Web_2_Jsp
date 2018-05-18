@@ -1,14 +1,39 @@
-<%@page import="java.util.ArrayList"%>
 <%@page import="com.iu.point.PointDAO"%>
 <%@page import="com.iu.point.PointDTO"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% 
 request.setCharacterEncoding("UTF-8");
 response.setCharacterEncoding("UTF-8");
-PointDAO pointDAO= new PointDAO(); 
-int num=pointDAO.select();
-%>
+String name=request.getParameter("name");
+
+PointDTO pointDTO=new PointDTO();
+PointDAO pointDAO=new PointDAO();
+
+int num=Integer.parseInt(request.getParameter("num"));
+int kor=Integer.parseInt(request.getParameter("kor"));
+int eng=Integer.parseInt(request.getParameter("eng"));
+int math=Integer.parseInt(request.getParameter("math"));
+int total=kor+eng+math;
+double avg=total/3;
+
+pointDTO.setNum(num);
+pointDTO.setName(name);
+pointDTO.setKor(kor);
+pointDTO.setEng(eng);
+pointDTO.setMath(math);
+pointDTO.setTotal(total);
+pointDTO.setAvg(avg);
+
+
+
+int result=pointDAO.update(pointDTO);
+
+String sql=null;
+if(result>0){sql="입력 성공";}
+else{sql="입력 실패";};
+%>            
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,49 +51,15 @@ int num=pointDAO.select();
 <body>
 
 <%@ include file="../temp/header.jsp" %>
-<section id=main>
-
-<table class="table-bordered" style="width:100%">
-<thead>
-<tr>
-<th> NUM </th>
-<th> NAME </th>
-<th> KOR </th>
-<th> ENG </th>
-<th> MATH </th>
-<th> TOTAL </th>
-<th> AVG </th>
-</tr>
-</thead>
-<tbody>
-<% 
-ArrayList<PointDTO> ap=pointDAO.print();
-for(PointDTO p:ap){
-%>	
-<tr>	
-<td> <%=p.getNum()%> </td>	
-<td> <%=p.getName()%> </td>	
-<td> <%=p.getKor()%> </td>	
-<td> <%=p.getEng()%> </td>	
-<td> <%=p.getMath()%> </td>	
-<td> <%=p.getTotal()%> </td>	
-<td> <%=p.getAvg()%> </td>	
-</tr>
-<%
-}
-%>
-</tbody>
-</table>
-
-<form action="./pointDeleteProcess.jsp">
-
-<% for(int i=1;i<=num;i++){%>
-NUM<%=i %>:<input type="radio" id="c<%=i %>"name="num" value="<%=i %>">
-<%	
-} 
-%>
-<input type="submit" id="btn2" class="btn-success" value="ENTER">
-</form>
+<section id="main">
+<h1>num:<%=num %></h1>
+<h1>NAME:<%=name %></h1>
+<h1>KOR:<%=kor %></h1>
+<h1>ENG:<%=eng %></h1>
+<h1>MATH:<%=math %></h1>
+<h1>TOTAL:<%=total %></h1>
+<h1>AVG:<%=avg %></h1>
+<h1>Input:<%=sql  %></h1>
 </section>
 <%@ include file="../temp/footer.jsp" %>
 </body>

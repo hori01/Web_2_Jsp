@@ -34,6 +34,32 @@ public class PointDAO {
 		}
 		return result;
 	}
+	public int update(PointDTO point) {
+		int result=0;
+		PreparedStatement st=null;
+		try {
+			Connection con=DBConnector.getConnect();
+
+			String sql="UPDATE point SET name=?,kor=?,eng=?,math=?,total=?,avg=? where num=?";
+
+			st=con.prepareStatement(sql);
+			
+			st.setString(1, point.getName());
+			st.setInt(2, point.getKor());
+			st.setInt(3, point.getEng());
+			st.setInt(4, point.getMath());
+			st.setInt(5, point.getTotal());
+			st.setDouble(6, point.getAvg());
+			st.setInt(7, point.getNum());
+
+			result=st.executeUpdate();
+			DBConnector.disConnect(st, con);
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		return result;
+	}
 	public int select() {
 		int result=0;
 		PreparedStatement st=null;
@@ -105,6 +131,37 @@ public class PointDAO {
 
 		return resultArray;
 	}
-	
+	public ArrayList<PointDTO> print(int i) {
+		ArrayList<PointDTO> resultArray= new ArrayList<>();
+		PointDTO result=null;
+		PreparedStatement st=null;
+		ResultSet rs=null;
+		Connection con;
+		try {
+			con = DBConnector.getConnect();
+			String sql="select * from point where num=?";
+			st=con.prepareStatement(sql);
+			st.setInt(1,i);
+			rs=st.executeQuery();
+
+			while(rs.next()) {
+				result=new PointDTO();
+				result.setNum(rs.getInt(1));
+				result.setName(rs.getString(2));
+				result.setKor(rs.getInt(3));
+				result.setEng(rs.getInt(4));
+				result.setMath(rs.getInt(5));
+				result.setTotal(rs.getInt(6));
+				result.setAvg(rs.getDouble(7));
+				resultArray.add(result);
+			}
+			
+			DBConnector.disConnect(rs, st, con);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return resultArray;
+	}
 	
 }

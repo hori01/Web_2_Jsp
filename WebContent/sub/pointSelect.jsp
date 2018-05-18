@@ -60,10 +60,10 @@ for(PointDTO p:ap){
 </tbody>
 </table>
 
-<form action="./pointDeleteProcess.jsp">
+<form action="./pointSelectProcess.jsp">
 
 <% for(int i=1;i<=num;i++){%>
-NUM<%=i %>:<input type="radio" id="c<%=i %>"name="num" value="<%=i %>">
+Num<%=i %>:<input type="radio" id="c<%=i %>"name="num" value="<%=i %>">
 <%	
 } 
 %>
