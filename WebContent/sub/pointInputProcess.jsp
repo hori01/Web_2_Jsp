@@ -7,13 +7,18 @@
 request.setCharacterEncoding("UTF-8");
 response.setCharacterEncoding("UTF-8");
 String name=request.getParameter("name");
+
+PointDTO pointDTO=new PointDTO();
+PointDAO pointDAO=new PointDAO();
+
+int num= pointDAO.select();
 int kor=Integer.parseInt(request.getParameter("kor"));
 int eng=Integer.parseInt(request.getParameter("eng"));
 int math=Integer.parseInt(request.getParameter("math"));
 int total=kor+eng+math;
 double avg=total/3;
 
-PointDTO pointDTO=new PointDTO();
+pointDTO.setNum(num+1);
 pointDTO.setName(name);
 pointDTO.setKor(kor);
 pointDTO.setEng(eng);
@@ -21,7 +26,8 @@ pointDTO.setMath(math);
 pointDTO.setTotal(total);
 pointDTO.setAvg(avg);
 
-PointDAO pointDAO=new PointDAO();
+
+
 int result=pointDAO.insert(pointDTO);
 
 String sql=null;

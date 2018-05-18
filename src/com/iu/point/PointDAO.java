@@ -11,22 +11,14 @@ public class PointDAO {
 	public int insert(PointDTO point) {
 		int result=0;
 		PreparedStatement st=null;
-		ResultSet rs=null;
 		try {
 			Connection con=DBConnector.getConnect();
-			String sql="select max(num) from point";
-			st=con.prepareStatement(sql);
-			rs=st.executeQuery();
 
-			rs.next();
-			int num=rs.getInt(1);
-			rs.close();
-			sql="insert into point values(?,?,?,?,?,?,?)";
+			String sql="insert into point values(?,?,?,?,?,?,?)";
 
 			st=con.prepareStatement(sql);
 			
-
-			st.setInt(1, num+1);
+			st.setInt(1, point.getNum());
 			st.setString(2, point.getName());
 			st.setInt(3, point.getKor());
 			st.setInt(4, point.getEng());
@@ -63,6 +55,7 @@ public class PointDAO {
 
 		return result;
 	}
+
 	public int delete(int num) {
 		int result=0;
 		PreparedStatement st=null;
@@ -112,4 +105,6 @@ public class PointDAO {
 
 		return resultArray;
 	}
+	
+	
 }
